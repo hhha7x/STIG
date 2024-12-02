@@ -9,14 +9,14 @@ from IOSXE_NDM_SWITCH_variables import *
 from stig_edit import ckl_editor
 #from netmiko.exception import NetmikoTimeoutException
 
-#User = input("What is your username?")
+User = input("What is your username?")
 Pass = getpass()
 with open ('IP1.txt') as Devices:
      for IP in Devices:
           Device = {
                  'device_type': 'cisco_ios',
                  'ip' : IP,
-                 'username': 'jimmy.alston.na',
+                 'username': User,
                  'password': Pass
                      }
 
