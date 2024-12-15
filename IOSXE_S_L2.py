@@ -11,14 +11,14 @@ from stig_edit import ckl_editor
 import re
 
 #User = input("What is your username?")
-#Pass = getpass()
+Pass = getpass()
 with open ('IP1.txt') as Devices:
      for IPs in Devices:
           Device = {
                  'device_type': 'cisco_ios',
-                 'ip' : IP,
+                 'ip' : IPs,
                  'username': 'jimmy.alston.na',
-                 'password': ''
+                 'password': Pass
                      }
 
 
@@ -73,7 +73,7 @@ def ios_xe_switch_l2_checks():
 
 
 
-         print('Checking STIG Compliance on Switch ' + IP)
+         print('Checking STIG Compliance on Switch ' + IPs)
          print('-'*80)
 
  

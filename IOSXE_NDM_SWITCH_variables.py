@@ -1,4 +1,26 @@
-FileIOSXESWITCHNDM = input("What is the name of the IOSXE NDM ckl file you are editing?")
+import xml.etree.ElementTree as ET
+tree = ET.parse('Blank_IOSXE_NDM.ckl')
+root = tree.getroot()
+
+Host = input("What is the hostname of the device? This will be added into the target data for the L2 Checklist")
+IP_add = input("What is the ip address of the device? This will be added into the target data for the L2 Checklist")
+FileIOSXESWITCHNDM = input("What would you like the name of the new checklist to be?")
+
+host_name = root.find(".//HOST_NAME")
+if host_name is not None:
+    host_name.text = Host
+
+host_ip = root.find(".//HOST_IP")
+if host_ip is not None:
+    host_ip.text = IP_add
+
+# Save the updated XML file
+tree.write(FileIOSXESWITCHNDM, encoding='utf-8', xml_declaration=True)
+
+
+
+
+
 # HostIP = input("What is the IP address of the device you want to STIG?")
 # Hostname = input("What is the hostname of the devices you want to STIG")
 

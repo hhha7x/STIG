@@ -9,14 +9,14 @@ from IOSXE_NDM_SWITCH_variables import *
 from stig_edit import ckl_editor
 #from netmiko.exception import NetmikoTimeoutException
 
-User = input("What is your username?")
+#User = input("What is your username?")
 Pass = getpass()
 with open ('IP1.txt') as Devices:
      for IP in Devices:
           Device = {
                  'device_type': 'cisco_ios',
                  'ip' : IP,
-                 'username': User,
+                 'username': 'jimmy.alston.na',
                  'password': Pass
                      }
 
@@ -41,15 +41,9 @@ def ios_xe_switch_ndm_checks():
          username = net_connect.send_command('show run | inc username')
          showbanner = net_connect.send_command('show run | beg banner')
          aaa = net_connect.send_command('show run aaa ')
+         version = net_connect.send_command('show version')
          banner = '''By using this IS (which includes any device attached to this IS), you consent
 to the following conditions:'''
-
-
-         ckl_editor.write_target_data(**Target_Data)
-
-
-
-
 
 
 
@@ -133,7 +127,6 @@ to the following conditions:'''
       # V-220523
 
       # V-220524
-         #Output1 = net_connect.send_command('show run | inc login')
          if "login block-for 900 attempts 3 within 120" in showrunlogin:
              print ("Yes")
              ckl_editor.write_vkey_data(**V_220524_NotAFinding)
@@ -166,7 +159,7 @@ to the following conditions:'''
              print ('no')
              ckl_editor.write_vkey_data(**V_220524_Open)
 
-      # V-220529
+       # V-220529
 
          print("Here are the ACL deny statements:")
          print (acl_denies)
