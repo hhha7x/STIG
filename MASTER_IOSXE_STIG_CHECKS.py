@@ -14,8 +14,8 @@ with open ('IP.txt') as Devices:
          Device = {
                  'device_type': 'cisco_ios',
                  'ip' : IPs,
-                 'username': 'jimmy.alston.na',
-                 'password': "243Hunter!!243Hunt"
+                 'username': 'User',
+                 'password': "Pass"
                      }
 
 
